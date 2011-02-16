@@ -1,0 +1,1440 @@
+  [4;36;1mSQL (2.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.6ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20110209110021)
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110209110021')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2011-02-09 16:32:49) [GET]
+
+ActionController::UnknownAction (No action responded to index. Actions: create and new):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing UsersController#index (for 127.0.0.1 at 2011-02-09 16:33:39) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 10ms (DB: 0) | 302 Found [http://localhost/users]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-09 16:33:39) [GET]
+Rendering sessions/new
+Completed in 44ms (View: 42, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 16:33:50) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/signup]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-09 16:33:50) [GET]
+Rendering sessions/new
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:34:48) [GET]
+
+ActionController::UnknownAction (No action responded to index. Actions: ):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:35:08) [GET]
+
+NoMethodError (undefined method `login_required' for #<HomeController:0x2612b1c>):
+  
+
+Rendered rescues/_trace (52.4ms)
+Rendered rescues/_request_and_response (1.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:35:08) [GET]
+
+NoMethodError (undefined method `login_required' for #<HomeController:0x2512050>):
+  
+
+Rendered rescues/_trace (110.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:35:59) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-09 16:35:59) [GET]
+Rendering sessions/new
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 16:36:03) [GET]
+Rendering users/new
+Completed in 27ms (View: 10, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2011-02-09 16:36:22) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"EwondlREDT1clkiJUAXzRCUnUDIHxEEdnQAz2Mz+Veo=", "user"=>{"password_confirmation"=>"1234", "password"=>"1234", "login"=>"gautam", "email"=>"g@r.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'g@r.com') LIMIT 1[0m
+Rendering users/new
+Completed in 34ms (View: 20, DB: 0) | 200 OK [http://localhost/users]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2011-02-09 16:42:17) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"EwondlREDT1clkiJUAXzRCUnUDIHxEEdnQAz2Mz+Veo=", "user"=>{"password_confirmation"=>"asdf123", "password"=>"asdf123", "login"=>"gautam", "email"=>"g@r.com"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'g@r.com') LIMIT 1[0m
+  [4;36;1mUser Create (2.6ms)[0m   [0;1mINSERT INTO "users" ("name", "salt", "created_at", "crypted_password", "remember_token_expires_at", "updated_at", "remember_token", "login", "email") VALUES('', 'ed4f29798f328a07ab72a709e270f29baaf2d24a', '2011-02-09 11:12:17', 'a2a16369b98c6af8f8fa706e2e3d5c2319bd1359', NULL, '2011-02-09 11:12:17', NULL, 'gautam', 'g@r.com')[0m
+Redirected to http://localhost:4004/
+Completed in 24ms (DB: 3) | 302 Found [http://localhost/users]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:42:17) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionController::UnknownAction (No action responded to index. Actions: ):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:42:23) [GET]
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionController::UnknownAction (No action responded to index. Actions: ):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:47:08) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering home/index
+
+ActionView::TemplateError (undefined method `first_name' for #<User:0x26d96e0>) on line #1 of app/views/home/index.html.erb:
+1: Hello <%= current_user.first_name if logged_in? %>
+
+    app/views/home/index.html.erb:1
+
+Rendered rescues/_trace (48.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 16:47:43) [GET]
+Rendering users/new
+Completed in 13ms (View: 5, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:49:39) [GET]
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering home/index
+Completed in 17ms (View: 7, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-09 16:49:44) [GET]
+Redirected to http://localhost:4004/
+Completed in 76ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:49:44) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-09 16:49:44) [GET]
+Rendering sessions/new
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2011-02-09 16:49:52) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"ZhWXGtLqnFg0HpCP+Vo/8A8+QOOgMV34RPSd4SqU8mI=", "login"=>"gautam", "password"=>"asd1234"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+Failed login for 'gautam' from 127.0.0.1 at Wed Feb 09 11:19:52 UTC 2011
+Rendering sessions/new
+Completed in 19ms (View: 3, DB: 0) | 200 OK [http://localhost/session]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2011-02-09 16:49:55) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"ZhWXGtLqnFg0HpCP+Vo/8A8+QOOgMV34RPSd4SqU8mI=", "login"=>"gautam", "password"=>"asdf123"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+Redirected to http://localhost:4004/
+Completed in 12ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:49:55) [GET]
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering home/index
+Completed in 17ms (View: 2, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:55:26) [GET]
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 19ms (View: 11, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:55:48) [GET]
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 78ms (View: 69, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-09 16:55:55) [GET]
+Redirected to http://localhost:4004/
+Completed in 9ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:55:55) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-09 16:55:55) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2011-02-09 16:56:02) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"WEcEDQwMzq6sVD7d9/WHL5ZLOj+KtoumsNIlsyVq4XI=", "login"=>"gautam", "password"=>"asdf123"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+Redirected to http://localhost:4004/
+Completed in 14ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 16:56:02) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 15ms (View: 2, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 16:56:35) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 18ms (View: 9, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 16:56:56) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 16ms (View: 9, DB: 0) | 200 OK [http://localhost/signup]
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSocialConnects (20110208120542)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (66.9ms)[0m   [0mCREATE TABLE "social_accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar(255), "uid" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110208120542')[0m
+Migrating to CreateUsers (20110209110021)
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("social_accounts")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 17:34:18) [GET]
+Rendering template within layouts/application
+Rendering users/new
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::ApplicationConfig) on line #26 of app/views/users/new.html.erb:
+23: <div id="social_connect">
+24:   <div id="componentDiv" style="float:left;"></div>
+25: 
+26:   <script type="text/javascript" src="http://cdn.gigya.com/js/socialize.js?apiKey=<%= ApplicationConfig['gigya']['api_key'] %>">
+27: 
+28:     var conf=
+29:     {
+
+    app/views/users/new.html.erb:26
+
+Rendered rescues/_trace (48.8ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 17:34:42) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 40ms (View: 30, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 17:35:44) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 25ms (View: 14, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 17:39:42) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 17ms (View: 10, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-02-09 17:39:42) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/jquery.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 17:42:40) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 22ms (View: 14, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 17:43:39) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 14ms (View: 6, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 17:49:30) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 17ms (View: 10, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 17:51:44) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 15ms (View: 7, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 17:52:17) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 15ms (View: 6, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 17:56:18) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 92ms (View: 84, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 18:06:36) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 23ms (View: 15, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 18:08:15) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 23ms (View: 15, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 18:08:45) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 21ms (View: 14, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 18:10:18) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 20ms (View: 13, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 18:11:18) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 23ms (View: 15, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-09 18:11:40) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 79ms (View: 7, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-09 18:15:32) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 41ms (View: 11, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-10 19:21:30) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-10 19:21:30) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 10ms (View: 8, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-10 19:21:36) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 14ms (View: 7, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-10 19:22:27) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-10 19:24:18) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.7ms)
+Completed in 14ms (View: 13, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-10 19:34:43) [GET]
+  Parameters: {"proxiedEmail"=>"", "city"=>"", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"jiMWkkJ0vKL7vCkB0WuxP2xqXjM=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-10 14:04:42", "country"=>"Pune,India", "loginProviderUID"=>"64960831", "UIDSig"=>"kQav7D4scCP8p+hs4RhwBviWyso=", "nickname"=>"gautamrege", "thumbnailURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "signature"=>"kQav7D4scCP8p+hs4RhwBviWyso=", "loginProvider"=>"twitter", "UID"=>"_gid_q5jcWua3PAR6MaBvVHu+5A==", "gender"=>"", "photoURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"twitter", "signatureTimestamp"=>"1297346682", "email"=>"", "state"=>"", "profileURL"=>"http://twitter.com/gautamrege", "isSiteUser"=>"true"}
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+NoMethodError (undefined method `authenticate_by_uid' for #<Class:0x2474670>):
+  app/controllers/users_controller.rb:34:in `social_signup'
+
+Rendered rescues/_trace (103.6ms)
+Rendered rescues/_request_and_response (1.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-10 19:37:16) [GET]
+  Parameters: {"proxiedEmail"=>"", "city"=>"", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"jiMWkkJ0vKL7vCkB0WuxP2xqXjM=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-10 14:04:42", "country"=>"Pune,India", "loginProviderUID"=>"64960831", "UIDSig"=>"kQav7D4scCP8p+hs4RhwBviWyso=", "nickname"=>"gautamrege", "thumbnailURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "signature"=>"kQav7D4scCP8p+hs4RhwBviWyso=", "loginProvider"=>"twitter", "UID"=>"_gid_q5jcWua3PAR6MaBvVHu+5A==", "gender"=>"", "photoURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"twitter", "signatureTimestamp"=>"1297346682", "email"=>"", "state"=>"", "profileURL"=>"http://twitter.com/gautamrege", "isSiteUser"=>"true"}
+
+NameError (uninitialized constant User::SocialAccount):
+  app/models/user.rb:52:in `authenticate_by_uid'
+  app/controllers/users_controller.rb:34:in `social_signup'
+
+Rendered rescues/_trace (38.4ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-10 19:37:45) [GET]
+  Parameters: {"proxiedEmail"=>"", "city"=>"", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"jiMWkkJ0vKL7vCkB0WuxP2xqXjM=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-10 14:04:42", "country"=>"Pune,India", "loginProviderUID"=>"64960831", "UIDSig"=>"kQav7D4scCP8p+hs4RhwBviWyso=", "nickname"=>"gautamrege", "thumbnailURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "signature"=>"kQav7D4scCP8p+hs4RhwBviWyso=", "loginProvider"=>"twitter", "UID"=>"_gid_q5jcWua3PAR6MaBvVHu+5A==", "gender"=>"", "photoURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"twitter", "signatureTimestamp"=>"1297346682", "email"=>"", "state"=>"", "profileURL"=>"http://twitter.com/gautamrege", "isSiteUser"=>"true"}
+  [4;36;1mSocialAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "social_accounts" WHERE (uid = '_gid_q5jcWua3PAR6MaBvVHu+5A==' and provider = 'twitter') LIMIT 1[0m
+Redirected to http://localhost:4004/social/connect
+Completed in 30ms (DB: 0) | 302 Found [http://localhost/social/signup?provider=twitter&signature=kQav7D4scCP8p%2Bhs4RhwBviWyso%3D&UIDSig=kQav7D4scCP8p%2Bhs4RhwBviWyso%3D&timestamp=2011-02-10%2014%3A04%3A42&UIDSignature=jiMWkkJ0vKL7vCkB0WuxP2xqXjM%3D&signatureTimestamp=1297346682&UID=_gid_q5jcWua3PAR6MaBvVHu%2B5A%3D%3D&nickname=gautamrege&photoURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&thumbnailURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&gender=&email=&proxiedEmail=&country=Pune%2CIndia&state=&city=&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Ftwitter.com%2Fgautamrege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=twitter&loginProviderUID=64960831&isTempUser=false]
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-10 19:37:45) [GET]
+
+ActionView::MissingTemplate (Missing layout layouts/sessions.erb in view path app/views):
+  app/controllers/users_controller.rb:83:in `social_connect'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-10 19:38:44) [GET]
+
+ActionView::MissingTemplate (Missing template users/social_connect.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-10 19:40:36) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_social (0.1ms)
+Completed in 19ms (View: 11, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:34:10) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 18:34:10) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (1.1ms)
+Completed in 93ms (View: 92, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:35:55) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 18:35:55) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.8ms)
+Completed in 35ms (View: 33, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 18:36:23) [GET]
+  Parameters: {"proxiedEmail"=>"", "city"=>"", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"/B9rqY2UJkKlnXP3G3AUgnB2slo=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 13:06:19", "country"=>"Pune,India", "loginProviderUID"=>"64960831", "UIDSig"=>"t9X+ZpQ9Lfo1ZRFochIL+TuNIBc=", "nickname"=>"gautamrege", "thumbnailURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "signature"=>"t9X+ZpQ9Lfo1ZRFochIL+TuNIBc=", "loginProvider"=>"twitter", "UID"=>"_gid_q5jcWua3PAR6MaBvVHu+5A==", "gender"=>"", "photoURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"twitter", "signatureTimestamp"=>"1297861579", "email"=>"", "state"=>"", "profileURL"=>"http://twitter.com/gautamrege", "isSiteUser"=>"true"}
+  [4;36;1mSocialAccount Load (39.6ms)[0m   [0;1mSELECT * FROM "social_accounts" WHERE (uid = '_gid_q5jcWua3PAR6MaBvVHu+5A==' and provider = 'twitter') LIMIT 1[0m
+Redirected to http://localhost:4004/social/connect
+Completed in 83ms (DB: 40) | 302 Found [http://localhost/social/signup?provider=twitter&signature=t9X%2BZpQ9Lfo1ZRFochIL%2BTuNIBc%3D&UIDSig=t9X%2BZpQ9Lfo1ZRFochIL%2BTuNIBc%3D&timestamp=2011-02-16%2013%3A06%3A19&UIDSignature=%2FB9rqY2UJkKlnXP3G3AUgnB2slo%3D&signatureTimestamp=1297861579&UID=_gid_q5jcWua3PAR6MaBvVHu%2B5A%3D%3D&nickname=gautamrege&photoURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&thumbnailURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&gender=&email=&proxiedEmail=&country=Pune%2CIndia&state=&city=&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Ftwitter.com%2Fgautamrege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=twitter&loginProviderUID=64960831&isTempUser=false]
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 18:36:23) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+
+ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x26d7c8c>) on line #1 of app/views/users/_basic.html.erb:
+1: <p><%= f.label :login %><br/>
+2: <%= f.text_field :login %></p>
+3: 
+4: <p><%= f.label :email %><br/>
+
+    app/views/users/_basic.html.erb:1
+    app/views/users/social_connect.html.erb:7
+    app/views/users/social_connect.html.erb:5
+
+Rendered rescues/_trace (70.0ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 18:37:14) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+
+ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x276fde8>) on line #1 of app/views/users/_basic.html.erb:
+1: <p><%= f.label :login %><br/>
+2: <%= f.text_field :login %></p>
+3: 
+4: <p><%= f.label :email %><br/>
+
+    app/views/users/_basic.html.erb:1
+    app/views/users/social_connect.html.erb:7
+    app/views/users/social_connect.html.erb:5
+
+Rendered rescues/_trace (59.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 18:37:37) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (5.1ms)
+Completed in 18ms (View: 10, DB: 0) | 200 OK [http://localhost/social/connect]
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 18:37:55) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"NKq3VOeh2iV9uugLop0iVaXlx9xMUE0pdqlZD8u90Ck=", "user"=>{"password_confirmation"=>"12345123", "password"=>"12345123", "login"=>"gautam", "email"=>"gatuam@take1.com"}}
+
+NoMethodError (undefined method `idioms' for #<User:0x2464748>):
+  app/controllers/users_controller.rb:89:in `social_register'
+
+Rendered rescues/_trace (57.6ms)
+Rendered rescues/_request_and_response (2.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 18:38:16) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"NKq3VOeh2iV9uugLop0iVaXlx9xMUE0pdqlZD8u90Ck=", "user"=>{"password_confirmation"=>"12345123", "password"=>"12345123", "login"=>"gautam", "email"=>"gatuam@take1.com"}}
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'gatuam@take1.com') LIMIT 1[0m
+
+ActionView::MissingTemplate (Missing layout layouts/sessions.erb in view path app/views):
+  app/controllers/users_controller.rb:106:in `social_register'
+  app/controllers/users_controller.rb:105:in `social_register'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 18:38:37) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"NKq3VOeh2iV9uugLop0iVaXlx9xMUE0pdqlZD8u90Ck=", "user"=>{"password_confirmation"=>"12345123", "password"=>"12345123", "login"=>"gautam", "email"=>"gatuam@take1.com"}}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'gatuam@take1.com') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (5.0ms)
+Completed in 32ms (View: 13, DB: 1) | 200 OK [http://localhost/social/register]
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 18:40:46) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"NKq3VOeh2iV9uugLop0iVaXlx9xMUE0pdqlZD8u90Ck=", "user"=>{"password_confirmation"=>"12345123", "password"=>"12345123", "login"=>"gautam", "email"=>"gatuam@take1.com"}}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'gatuam@take1.com') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (6.5ms)
+Completed in 43ms (View: 16, DB: 0) | 200 OK [http://localhost/social/register]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:41:01) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 18:41:01) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 18:42:39) [GET]
+  Parameters: {"birthDay"=>"14", "proxiedEmail"=>"", "city"=>"Pune", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"YVbgcFtVhwiOA98AXrWb+w1PSmU=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 13:12:37", "country"=>"India", "loginProviderUID"=>"674270770", "UIDSig"=>"CPfzQeMr4CsmuMf/+kgFfT+SFj8=", "nickname"=>"Gautam Rege", "thumbnailURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_q.jpg", "signature"=>"CPfzQeMr4CsmuMf/+kgFfT+SFj8=", "loginProvider"=>"facebook", "UID"=>"_gid_0JRk3dCYmwSlLMTkotGx0g==", "birthMonth"=>"12", "gender"=>"m", "birthYear"=>"1978", "photoURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_s.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"facebook", "signatureTimestamp"=>"1297861957", "email"=>"gautamrege@gmail.com", "state"=>"Maharashtra", "profileURL"=>"http://www.facebook.com/gautam.rege", "isSiteUser"=>"true"}
+  [4;35;1mSocialAccount Load (0.5ms)[0m   [0mSELECT * FROM "social_accounts" WHERE (uid = '_gid_0JRk3dCYmwSlLMTkotGx0g==' and provider = 'facebook') LIMIT 1[0m
+Redirected to http://localhost:4004/social/connect
+Completed in 20ms (DB: 0) | 302 Found [http://localhost/social/signup?provider=facebook&signature=CPfzQeMr4CsmuMf%2F%2BkgFfT%2BSFj8%3D&UIDSig=CPfzQeMr4CsmuMf%2F%2BkgFfT%2BSFj8%3D&timestamp=2011-02-16%2013%3A12%3A37&UIDSignature=YVbgcFtVhwiOA98AXrWb%2Bw1PSmU%3D&signatureTimestamp=1297861957&UID=_gid_0JRk3dCYmwSlLMTkotGx0g%3D%3D&nickname=Gautam%20Rege&photoURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_s.jpg&thumbnailURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_q.jpg&birthDay=14&birthMonth=12&birthYear=1978&gender=m&email=gautamrege%40gmail.com&proxiedEmail=&country=India&state=Maharashtra&city=Pune&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Fwww.facebook.com%2Fgautam.rege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=facebook&loginProviderUID=674270770&isTempUser=false]
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 18:42:39) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (3.5ms)
+Completed in 17ms (View: 9, DB: 0) | 200 OK [http://localhost/social/connect]
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 18:42:55) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"NKq3VOeh2iV9uugLop0iVaXlx9xMUE0pdqlZD8u90Ck=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam123", "email"=>"gautamrege@gmail.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam123') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Create (0.8ms)[0m   [0;1mINSERT INTO "users" ("name", "salt", "created_at", "crypted_password", "remember_token_expires_at", "updated_at", "remember_token", "login", "email") VALUES('', '9ea38338948e1a2d816cd38720ad899619c29882', '2011-02-16 13:12:55', '9a1545a4cd7579640b9f3c286b6e288089c8e398', NULL, '2011-02-16 13:12:55', NULL, 'gautam123', 'gautamrege@gmail.com')[0m
+
+NoMethodError (undefined method `provider' for #<User:0x25af79c>):
+  app/controllers/users_controller.rb:96:in `social_register'
+
+Rendered rescues/_trace (39.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 18:47:48) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"NKq3VOeh2iV9uugLop0iVaXlx9xMUE0pdqlZD8u90Ck=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam123", "email"=>"gautamrege@gmail.com"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam123') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (8.4ms)
+Completed in 40ms (View: 17, DB: 0) | 200 OK [http://localhost/social/register]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:47:57) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 18:47:57) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.2ms)
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 18:48:12) [GET]
+  Parameters: {"birthDay"=>"14", "proxiedEmail"=>"", "city"=>"Pune", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"vr5hesPtlLjy0xpUKNooHgDz2fM=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 13:18:08", "country"=>"India", "loginProviderUID"=>"674270770", "UIDSig"=>"PClM6ZaYJgwKqAsx8tqMreETz90=", "nickname"=>"Gautam Rege", "thumbnailURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_q.jpg", "signature"=>"PClM6ZaYJgwKqAsx8tqMreETz90=", "loginProvider"=>"facebook", "UID"=>"_gid_0JRk3dCYmwSlLMTkotGx0g==", "birthMonth"=>"12", "gender"=>"m", "birthYear"=>"1978", "photoURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_s.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"facebook", "signatureTimestamp"=>"1297862288", "email"=>"gautamrege@gmail.com", "state"=>"Maharashtra", "profileURL"=>"http://www.facebook.com/gautam.rege", "isSiteUser"=>"true"}
+  [4;35;1mSocialAccount Load (0.5ms)[0m   [0mSELECT * FROM "social_accounts" WHERE (uid = '_gid_0JRk3dCYmwSlLMTkotGx0g==' and provider = 'facebook') LIMIT 1[0m
+Redirected to http://localhost:4004/social/connect
+Completed in 40ms (DB: 0) | 302 Found [http://localhost/social/signup?provider=facebook&signature=PClM6ZaYJgwKqAsx8tqMreETz90%3D&UIDSig=PClM6ZaYJgwKqAsx8tqMreETz90%3D&timestamp=2011-02-16%2013%3A18%3A08&UIDSignature=vr5hesPtlLjy0xpUKNooHgDz2fM%3D&signatureTimestamp=1297862288&UID=_gid_0JRk3dCYmwSlLMTkotGx0g%3D%3D&nickname=Gautam%20Rege&photoURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_s.jpg&thumbnailURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_q.jpg&birthDay=14&birthMonth=12&birthYear=1978&gender=m&email=gautamrege%40gmail.com&proxiedEmail=&country=India&state=Maharashtra&city=Pune&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Fwww.facebook.com%2Fgautam.rege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=facebook&loginProviderUID=674270770&isTempUser=false]
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 18:48:12) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (3.2ms)
+Completed in 13ms (View: 5, DB: 0) | 200 OK [http://localhost/social/connect]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "users" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+  [4;36;1mUser Destroy (0.6ms)[0m   [0;1mDELETE FROM "users" WHERE "id" = 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" ORDER BY users.id DESC LIMIT 1[0m
+  [4;36;1mUser Destroy (0.3ms)[0m   [0;1mDELETE FROM "users" WHERE "id" = 2[0m
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 18:48:50) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"NKq3VOeh2iV9uugLop0iVaXlx9xMUE0pdqlZD8u90Ck=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Create (2.1ms)[0m   [0;1mINSERT INTO "users" ("name", "salt", "created_at", "crypted_password", "remember_token_expires_at", "updated_at", "remember_token", "login", "email") VALUES('', 'e70264402e7fe80a0614136e4bb1f54e7ad0da9a', '2011-02-16 13:18:50', '629e497622631388b4264a3fe359893362172b82', NULL, '2011-02-16 13:18:50', NULL, 'gautam', 'gautamrege@gmail.com')[0m
+  [4;35;1mSocialAccount Create (0.5ms)[0m   [0mINSERT INTO "social_accounts" ("created_at", "updated_at", "uid", "user_id", "provider") VALUES('2011-02-16 13:18:50', '2011-02-16 13:18:50', '_gid_0JRk3dCYmwSlLMTkotGx0g==', 3, 'facebook')[0m
+
+NoMethodError (undefined method `uid' for #<User:0x2545608>):
+  app/controllers/users_controller.rb:100:in `social_register'
+
+Rendered rescues/_trace (56.1ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" ORDER BY users.id DESC LIMIT 1[0m
+  [4;35;1mUser Destroy (0.6ms)[0m   [0mDELETE FROM "users" WHERE "id" = 3[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:49:44) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 18:49:44) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 18:49:54) [GET]
+  Parameters: {"birthDay"=>"14", "proxiedEmail"=>"", "city"=>"Pune", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"37Gf8OKtlZrK5IOuBL/JEkGzEQA=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 13:19:53", "country"=>"India", "loginProviderUID"=>"674270770", "UIDSig"=>"7uXwo4q1PCcs3qWZWKzV7H4tiFk=", "nickname"=>"Gautam Rege", "thumbnailURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_q.jpg", "signature"=>"7uXwo4q1PCcs3qWZWKzV7H4tiFk=", "loginProvider"=>"facebook", "UID"=>"_gid_0JRk3dCYmwSlLMTkotGx0g==", "birthMonth"=>"12", "gender"=>"m", "birthYear"=>"1978", "photoURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_s.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"facebook", "signatureTimestamp"=>"1297862393", "email"=>"gautamrege@gmail.com", "state"=>"Maharashtra", "profileURL"=>"http://www.facebook.com/gautam.rege", "isSiteUser"=>"true"}
+  [4;36;1mSocialAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "social_accounts" WHERE (uid = '_gid_0JRk3dCYmwSlLMTkotGx0g==' and provider = 'facebook') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+Redirected to http://localhost:4004/social/connect
+Completed in 13ms (DB: 1) | 302 Found [http://localhost/social/signup?provider=facebook&signature=7uXwo4q1PCcs3qWZWKzV7H4tiFk%3D&UIDSig=7uXwo4q1PCcs3qWZWKzV7H4tiFk%3D&timestamp=2011-02-16%2013%3A19%3A53&UIDSignature=37Gf8OKtlZrK5IOuBL%2FJEkGzEQA%3D&signatureTimestamp=1297862393&UID=_gid_0JRk3dCYmwSlLMTkotGx0g%3D%3D&nickname=Gautam%20Rege&photoURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_s.jpg&thumbnailURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_q.jpg&birthDay=14&birthMonth=12&birthYear=1978&gender=m&email=gautamrege%40gmail.com&proxiedEmail=&country=India&state=Maharashtra&city=Pune&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Fwww.facebook.com%2Fgautam.rege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=facebook&loginProviderUID=674270770&isTempUser=false]
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 18:49:54) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (3.5ms)
+Completed in 16ms (View: 6, DB: 0) | 200 OK [http://localhost/social/connect]
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 18:50:04) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"NKq3VOeh2iV9uugLop0iVaXlx9xMUE0pdqlZD8u90Ck=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("name", "salt", "created_at", "crypted_password", "remember_token_expires_at", "updated_at", "remember_token", "login", "email") VALUES('', '4db485dac98ee0c2a852c412bb286f3c9b177d97', '2011-02-16 13:20:04', '7fc5ff8463aa776765623821c3d669b7e897744b', NULL, '2011-02-16 13:20:04', NULL, 'gautam', 'gautamrege@gmail.com')[0m
+  [4;35;1mSocialAccount Create (0.4ms)[0m   [0mINSERT INTO "social_accounts" ("created_at", "updated_at", "uid", "user_id", "provider") VALUES('2011-02-16 13:20:04', '2011-02-16 13:20:04', '_gid_0JRk3dCYmwSlLMTkotGx0g==', 4, 'facebook')[0m
+  [4;36;1mSocialAccount Load (0.6ms)[0m   [0;1mSELECT * FROM "social_accounts" WHERE (uid = '_gid_0JRk3dCYmwSlLMTkotGx0g==' and provider = 'facebook') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+
+NoMethodError (undefined method `login' for nil:NilClass):
+  app/controllers/users_controller.rb:101:in `social_register'
+
+Rendered rescues/_trace (46.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSocialAccount Load (0.8ms)[0m   [0;1mSELECT * FROM "social_accounts" [0m
+  [4;35;1mSocialAccount Load (0.3ms)[0m   [0mSELECT * FROM "social_accounts" LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+  [4;35;1mSocialAccount Load (0.3ms)[0m   [0mSELECT * FROM "social_accounts" LIMIT 1[0m
+  [4;36;1mSocialAccount Load (0.8ms)[0m   [0;1mSELECT * FROM "social_accounts" LIMIT 1[0m
+  [4;35;1mSocialAccount Load (0.3ms)[0m   [0mSELECT * FROM "social_accounts" LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" [0m
+  [4;36;1mSocialAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "social_accounts" [0m
+  [4;35;1mSocialAccount Load (0.3ms)[0m   [0mSELECT * FROM "social_accounts" ORDER BY social_accounts.id DESC LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 4) [0m
+  [4;35;1mSocialAccount Load (0.3ms)[0m   [0mSELECT * FROM "social_accounts" ORDER BY social_accounts.id DESC LIMIT 1[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSocialAccount Delete all (1.9ms)[0m   [0mDELETE FROM "social_accounts" WHERE 1=1[0m
+  [4;36;1mUser Delete all (1.7ms)[0m   [0;1mDELETE FROM "users" WHERE 1=1[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:53:30) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 18:53:30) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 18:53:43) [GET]
+  Parameters: {"birthDay"=>"14", "proxiedEmail"=>"", "city"=>"Pune", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"/PiKg2wVn66ENCY5paB0T6Gn8O8=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 13:23:41", "country"=>"India", "loginProviderUID"=>"674270770", "UIDSig"=>"4T9dUBXN93cIqiBmKenk5O/Eam4=", "nickname"=>"Gautam Rege", "thumbnailURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_q.jpg", "signature"=>"4T9dUBXN93cIqiBmKenk5O/Eam4=", "loginProvider"=>"facebook", "UID"=>"_gid_0JRk3dCYmwSlLMTkotGx0g==", "birthMonth"=>"12", "gender"=>"m", "birthYear"=>"1978", "photoURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_s.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"facebook", "signatureTimestamp"=>"1297862621", "email"=>"gautamrege@gmail.com", "state"=>"Maharashtra", "profileURL"=>"http://www.facebook.com/gautam.rege", "isSiteUser"=>"true"}
+  [4;36;1mSocialAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "social_accounts" WHERE (uid = '_gid_0JRk3dCYmwSlLMTkotGx0g==' and provider = 'facebook') LIMIT 1[0m
+Redirected to http://localhost:4004/social/connect
+Completed in 11ms (DB: 0) | 302 Found [http://localhost/social/signup?provider=facebook&signature=4T9dUBXN93cIqiBmKenk5O%2FEam4%3D&UIDSig=4T9dUBXN93cIqiBmKenk5O%2FEam4%3D&timestamp=2011-02-16%2013%3A23%3A41&UIDSignature=%2FPiKg2wVn66ENCY5paB0T6Gn8O8%3D&signatureTimestamp=1297862621&UID=_gid_0JRk3dCYmwSlLMTkotGx0g%3D%3D&nickname=Gautam%20Rege&photoURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_s.jpg&thumbnailURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_q.jpg&birthDay=14&birthMonth=12&birthYear=1978&gender=m&email=gautamrege%40gmail.com&proxiedEmail=&country=India&state=Maharashtra&city=Pune&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Fwww.facebook.com%2Fgautam.rege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=facebook&loginProviderUID=674270770&isTempUser=false]
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 18:53:44) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (3.5ms)
+Completed in 15ms (View: 6, DB: 0) | 200 OK [http://localhost/social/connect]
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 18:53:52) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"NKq3VOeh2iV9uugLop0iVaXlx9xMUE0pdqlZD8u90Ck=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.5ms)[0m   [0mINSERT INTO "users" ("name", "salt", "created_at", "crypted_password", "remember_token_expires_at", "updated_at", "remember_token", "login", "email") VALUES('', 'c9f48f3c5360bdd71a3771e91a6e0db64a37717f', '2011-02-16 13:23:52', '1b2be5a16cb55b5c628dd2d7405423b25c8e346e', NULL, '2011-02-16 13:23:52', NULL, 'gautam', 'gautamrege@gmail.com')[0m
+  [4;36;1mSocialAccount Create (0.4ms)[0m   [0;1mINSERT INTO "social_accounts" ("created_at", "updated_at", "uid", "user_id", "provider") VALUES('2011-02-16 13:23:52', '2011-02-16 13:23:52', '_gid_0JRk3dCYmwSlLMTkotGx0g==', 5, 'facebook')[0m
+  [4;35;1mSocialAccount Load (0.3ms)[0m   [0mSELECT * FROM "social_accounts" WHERE (uid = '_gid_0JRk3dCYmwSlLMTkotGx0g==' and provider = 'facebook') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 5) [0m
+Redirected to http://localhost:4004/
+Completed in 32ms (DB: 2) | 302 Found [http://localhost/social/register]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:53:52) [GET]
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::Hello) on line #1 of app/views/home/index.html.erb:
+1: <% Hello <= current_user.login if logged_in? %>
+
+    app/views/home/index.html.erb:1
+
+Rendered rescues/_trace (55.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:54:33) [GET]
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 86ms (View: 77, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:54:42) [GET]
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 16ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:56:57) [GET]
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 16ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-16 18:57:08) [GET]
+Redirected to http://localhost:4004/
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:57:08) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 18:57:08) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 18:57:19) [GET]
+  Parameters: {"birthDay"=>"14", "proxiedEmail"=>"", "city"=>"Pune", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"T9Ar2rDfKT8swBVN2xY4W5UeKvk=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 13:27:16", "country"=>"India", "loginProviderUID"=>"674270770", "UIDSig"=>"ZHQskfIJ6U2PrcR1lE85WV/1rxk=", "nickname"=>"Gautam Rege", "thumbnailURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_q.jpg", "signature"=>"ZHQskfIJ6U2PrcR1lE85WV/1rxk=", "loginProvider"=>"facebook", "UID"=>"_gid_0JRk3dCYmwSlLMTkotGx0g==", "birthMonth"=>"12", "gender"=>"m", "birthYear"=>"1978", "photoURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_s.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"facebook", "signatureTimestamp"=>"1297862836", "email"=>"gautamrege@gmail.com", "state"=>"Maharashtra", "profileURL"=>"http://www.facebook.com/gautam.rege", "isSiteUser"=>"true"}
+  [4;35;1mSocialAccount Load (0.5ms)[0m   [0mSELECT * FROM "social_accounts" WHERE (uid = '_gid_0JRk3dCYmwSlLMTkotGx0g==' and provider = 'facebook') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 5) [0m
+Redirected to http://localhost:4004/
+Completed in 13ms (DB: 1) | 302 Found [http://localhost/social/signup?provider=facebook&signature=ZHQskfIJ6U2PrcR1lE85WV%2F1rxk%3D&UIDSig=ZHQskfIJ6U2PrcR1lE85WV%2F1rxk%3D&timestamp=2011-02-16%2013%3A27%3A16&UIDSignature=T9Ar2rDfKT8swBVN2xY4W5UeKvk%3D&signatureTimestamp=1297862836&UID=_gid_0JRk3dCYmwSlLMTkotGx0g%3D%3D&nickname=Gautam%20Rege&photoURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_s.jpg&thumbnailURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_q.jpg&birthDay=14&birthMonth=12&birthYear=1978&gender=m&email=gautamrege%40gmail.com&proxiedEmail=&country=India&state=Maharashtra&city=Pune&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Fwww.facebook.com%2Fgautam.rege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=facebook&loginProviderUID=674270770&isTempUser=false]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:57:19) [GET]
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 15ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-16 18:57:27) [GET]
+Redirected to http://localhost:4004/
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:57:27) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 65ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 18:57:27) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2011-02-16 18:57:35) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"ZPEdf9qptIqv1nVYmLIrsnnD2674h3rNWZA5stCvipc=", "login"=>"gautam", "password"=>"grege123"}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+Redirected to http://localhost:4004/
+Completed in 14ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:57:35) [GET]
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 21ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-16 18:57:41) [GET]
+Redirected to http://localhost:4004/
+Completed in 7ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 18:57:41) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 18:57:41) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 18:58:01) [GET]
+  Parameters: {"proxiedEmail"=>"", "city"=>"", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"4/YYRu5JC7gX400KhTHqW2ulSpU=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 13:27:59", "country"=>"Pune,India", "loginProviderUID"=>"64960831", "UIDSig"=>"0+lyXNjGualETFdxU3yT3updnJo=", "nickname"=>"gautamrege", "thumbnailURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "signature"=>"0+lyXNjGualETFdxU3yT3updnJo=", "loginProvider"=>"twitter", "UID"=>"_gid_q5jcWua3PAR6MaBvVHu+5A==", "gender"=>"", "photoURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"twitter", "signatureTimestamp"=>"1297862879", "email"=>"", "state"=>"", "profileURL"=>"http://twitter.com/gautamrege", "isSiteUser"=>"true"}
+  [4;36;1mSocialAccount Load (1.2ms)[0m   [0;1mSELECT * FROM "social_accounts" WHERE (uid = '_gid_q5jcWua3PAR6MaBvVHu+5A==' and provider = 'twitter') LIMIT 1[0m
+Redirected to http://localhost:4004/social/connect
+Completed in 16ms (DB: 1) | 302 Found [http://localhost/social/signup?provider=twitter&signature=0%2BlyXNjGualETFdxU3yT3updnJo%3D&UIDSig=0%2BlyXNjGualETFdxU3yT3updnJo%3D&timestamp=2011-02-16%2013%3A27%3A59&UIDSignature=4%2FYYRu5JC7gX400KhTHqW2ulSpU%3D&signatureTimestamp=1297862879&UID=_gid_q5jcWua3PAR6MaBvVHu%2B5A%3D%3D&nickname=gautamrege&photoURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&thumbnailURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&gender=&email=&proxiedEmail=&country=Pune%2CIndia&state=&city=&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Ftwitter.com%2Fgautamrege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=twitter&loginProviderUID=64960831&isTempUser=false]
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 18:58:02) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (3.5ms)
+Completed in 16ms (View: 6, DB: 0) | 200 OK [http://localhost/social/connect]
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 18:58:15) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"zdVaiRPtC/dW8B5Aln7EYnqqK7Vv1FXIC6M9Lj3mdmU=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gatuamrege@gmail.com"}}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'gatuamrege@gmail.com') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (3.3ms)
+Completed in 25ms (View: 7, DB: 0) | 200 OK [http://localhost/social/register]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 19:09:14) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 19:09:14) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-02-16 19:09:24) [GET]
+
+ActionController::RoutingError (No route matches "/user/new" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 19:09:29) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-16 19:09:47) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_basic (3.4ms)
+Rendered users/_social (0.1ms)
+Completed in 22ms (View: 15, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2011-02-16 19:10:04) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"zdVaiRPtC/dW8B5Aln7EYnqqK7Vv1FXIC6M9Lj3mdmU=", "user"=>{"password_confirmation"=>"test123", "password"=>"test123", "login"=>"test", "email"=>"test@test.com"}}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'test') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@test.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.5ms)[0m   [0mINSERT INTO "users" ("name", "salt", "created_at", "crypted_password", "remember_token_expires_at", "updated_at", "remember_token", "login", "email") VALUES('', '52d46a84cb2b2a3481ca6723e4bff69b09ce6d1a', '2011-02-16 13:40:05', '5dbd418b519588766a213e08cdad63c50b0651bf', NULL, '2011-02-16 13:40:05', NULL, 'test', 'test@test.com')[0m
+Redirected to http://localhost:4004/
+Completed in 29ms (DB: 1) | 302 Found [http://localhost/users]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 19:10:05) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 42ms (View: 7, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-16 19:10:52) [GET]
+Redirected to http://localhost:4004/
+Completed in 12ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 19:10:52) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 19:10:52) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (63.1ms)
+Completed in 68ms (View: 66, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 19:11:48) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 9ms (View: 7, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-02-16 19:11:54) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_basic (3.4ms)
+Rendered users/_social (0.1ms)
+Completed in 14ms (View: 6, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 19:12:05) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 19:12:05) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 17ms (View: 15, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 19:12:42) [GET]
+  Parameters: {"birthDay"=>"14", "proxiedEmail"=>"", "city"=>"Pune", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"OROub43hT2GNbKsmzEZCF89xrLE=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 13:42:40", "country"=>"India", "loginProviderUID"=>"674270770", "UIDSig"=>"xYk/+iEL2mnq9m9fvB+RP/CcFq0=", "nickname"=>"Gautam Rege", "thumbnailURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_q.jpg", "signature"=>"xYk/+iEL2mnq9m9fvB+RP/CcFq0=", "loginProvider"=>"facebook", "UID"=>"_gid_0JRk3dCYmwSlLMTkotGx0g==", "birthMonth"=>"12", "gender"=>"m", "birthYear"=>"1978", "photoURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_s.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"facebook", "signatureTimestamp"=>"1297863760", "email"=>"gautamrege@gmail.com", "state"=>"Maharashtra", "profileURL"=>"http://www.facebook.com/gautam.rege", "isSiteUser"=>"true"}
+  [4;35;1mSocialAccount Load (0.5ms)[0m   [0mSELECT * FROM "social_accounts" WHERE (uid = '_gid_0JRk3dCYmwSlLMTkotGx0g==' and provider = 'facebook') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 5) [0m
+Redirected to http://localhost:4004/
+Completed in 17ms (DB: 1) | 302 Found [http://localhost/social/signup?provider=facebook&signature=xYk%2F%2BiEL2mnq9m9fvB%2BRP%2FCcFq0%3D&UIDSig=xYk%2F%2BiEL2mnq9m9fvB%2BRP%2FCcFq0%3D&timestamp=2011-02-16%2013%3A42%3A40&UIDSignature=OROub43hT2GNbKsmzEZCF89xrLE%3D&signatureTimestamp=1297863760&UID=_gid_0JRk3dCYmwSlLMTkotGx0g%3D%3D&nickname=Gautam%20Rege&photoURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_s.jpg&thumbnailURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_q.jpg&birthDay=14&birthMonth=12&birthYear=1978&gender=m&email=gautamrege%40gmail.com&proxiedEmail=&country=India&state=Maharashtra&city=Pune&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Fwww.facebook.com%2Fgautam.rege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=facebook&loginProviderUID=674270770&isTempUser=false]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 19:12:42) [GET]
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 14ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-16 19:12:50) [GET]
+Redirected to http://localhost:4004/
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 19:12:50) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 19:12:50) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 8ms (View: 7, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 20:00:25) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.2ms)
+Completed in 46ms (View: 45, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 20:01:03) [GET]
+  Parameters: {"birthDay"=>"14", "proxiedEmail"=>"", "city"=>"Pune", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"XWcaAhoJ2aUOzRCE3HksST+42z4=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 14:31:03", "country"=>"India", "loginProviderUID"=>"674270770", "UIDSig"=>"iAEW2xTdETrDFWi130UuJAiLst4=", "nickname"=>"Gautam Rege", "thumbnailURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_q.jpg", "signature"=>"iAEW2xTdETrDFWi130UuJAiLst4=", "loginProvider"=>"facebook", "UID"=>"_gid_0JRk3dCYmwSlLMTkotGx0g==", "birthMonth"=>"12", "gender"=>"m", "birthYear"=>"1978", "photoURL"=>"http://profile.ak.fbcdn.net/hprofile-ak-snc4/27467_674270770_8298_s.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"facebook", "signatureTimestamp"=>"1297866663", "email"=>"gautamrege@gmail.com", "state"=>"Maharashtra", "profileURL"=>"http://www.facebook.com/gautam.rege", "isSiteUser"=>"true"}
+  [4;36;1mSocialAccount Load (19.1ms)[0m   [0;1mSELECT * FROM "social_accounts" WHERE (uid = '_gid_0JRk3dCYmwSlLMTkotGx0g==' and provider = 'facebook') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 5) [0m
+Redirected to http://localhost:4004/
+Completed in 34ms (DB: 19) | 302 Found [http://localhost/social/signup?provider=facebook&signature=iAEW2xTdETrDFWi130UuJAiLst4%3D&UIDSig=iAEW2xTdETrDFWi130UuJAiLst4%3D&timestamp=2011-02-16%2014%3A31%3A03&UIDSignature=XWcaAhoJ2aUOzRCE3HksST%2B42z4%3D&signatureTimestamp=1297866663&UID=_gid_0JRk3dCYmwSlLMTkotGx0g%3D%3D&nickname=Gautam%20Rege&photoURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_s.jpg&thumbnailURL=http%3A%2F%2Fprofile.ak.fbcdn.net%2Fhprofile-ak-snc4%2F27467_674270770_8298_q.jpg&birthDay=14&birthMonth=12&birthYear=1978&gender=m&email=gautamrege%40gmail.com&proxiedEmail=&country=India&state=Maharashtra&city=Pune&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Fwww.facebook.com%2Fgautam.rege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=facebook&loginProviderUID=674270770&isTempUser=false]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:01:04) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 46ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-16 20:01:08) [GET]
+Redirected to http://localhost:4004/
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:01:08) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 20:01:08) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-16 20:01:09) [GET]
+Redirected to http://localhost:4004/
+Completed in 7ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:01:09) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 20:01:09) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2011-02-16 20:01:14) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"gLzSUwIbRuCiaDIFYWO/eWXhigDOsXP17HG8EDWCdrk=", "login"=>"gautam", "password"=>"grege123"}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+Redirected to http://localhost:4004/
+Completed in 14ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:01:14) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 17ms (View: 7, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-16 20:01:16) [GET]
+Redirected to http://localhost:4004/
+Completed in 7ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:01:16) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 20:01:16) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 20:01:43) [GET]
+  Parameters: {"proxiedEmail"=>"", "city"=>"", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"1I6y5Ji8wu7kpFFoCBnB8ssuYVI=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 14:31:42", "country"=>"Pune,India", "loginProviderUID"=>"64960831", "UIDSig"=>"oFhWia0gQ4wHHkoagLHBPLSxIR0=", "nickname"=>"gautamrege", "thumbnailURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "signature"=>"oFhWia0gQ4wHHkoagLHBPLSxIR0=", "loginProvider"=>"twitter", "UID"=>"_gid_q5jcWua3PAR6MaBvVHu+5A==", "gender"=>"", "photoURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"twitter", "signatureTimestamp"=>"1297866702", "email"=>"", "state"=>"", "profileURL"=>"http://twitter.com/gautamrege", "isSiteUser"=>"true"}
+  [4;35;1mSocialAccount Load (1.5ms)[0m   [0mSELECT * FROM "social_accounts" WHERE (uid = '_gid_q5jcWua3PAR6MaBvVHu+5A==' and provider = 'twitter') LIMIT 1[0m
+Redirected to http://localhost:4004/social/connect
+Completed in 23ms (DB: 1) | 302 Found [http://localhost/social/signup?provider=twitter&signature=oFhWia0gQ4wHHkoagLHBPLSxIR0%3D&UIDSig=oFhWia0gQ4wHHkoagLHBPLSxIR0%3D&timestamp=2011-02-16%2014%3A31%3A42&UIDSignature=1I6y5Ji8wu7kpFFoCBnB8ssuYVI%3D&signatureTimestamp=1297866702&UID=_gid_q5jcWua3PAR6MaBvVHu%2B5A%3D%3D&nickname=gautamrege&photoURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&thumbnailURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&gender=&email=&proxiedEmail=&country=Pune%2CIndia&state=&city=&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Ftwitter.com%2Fgautamrege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=twitter&loginProviderUID=64960831&isTempUser=false]
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 20:01:43) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (3.2ms)
+Completed in 17ms (View: 7, DB: 0) | 200 OK [http://localhost/social/connect]
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 20:01:57) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+NoMethodError (undefined method `find_by_user_id' for #<Class:0x2452ef8>):
+  app/controllers/users_controller.rb:73:in `social_account_linking_url'
+  app/controllers/users_controller.rb:87:in `social_register'
+
+Rendered rescues/_trace (103.3ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 20:02:18) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+
+ActionController::ActionControllerError (Cannot redirect to nil!):
+  app/controllers/users_controller.rb:87:in `social_register'
+
+Rendered rescues/_trace (43.6ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 20:03:02) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/users_controller.rb:87:in `social_account_linking_url'
+  app/controllers/users_controller.rb:87:in `social_register'
+
+Rendered rescues/_trace (45.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:03:43) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 20:03:43) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 8ms (View: 6, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 20:05:19) [GET]
+  Parameters: {"proxiedEmail"=>"", "city"=>"", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"EDL5bTe9IP1a1ZRuGOxxkKs/VA0=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 14:35:18", "country"=>"Pune,India", "loginProviderUID"=>"64960831", "UIDSig"=>"9a5rD0MuRoAVEMR411yh9QKwnIQ=", "nickname"=>"gautamrege", "thumbnailURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "signature"=>"9a5rD0MuRoAVEMR411yh9QKwnIQ=", "loginProvider"=>"twitter", "UID"=>"_gid_q5jcWua3PAR6MaBvVHu+5A==", "gender"=>"", "photoURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"twitter", "signatureTimestamp"=>"1297866918", "email"=>"", "state"=>"", "profileURL"=>"http://twitter.com/gautamrege", "isSiteUser"=>"true"}
+  [4;35;1mSocialAccount Load (0.4ms)[0m   [0mSELECT * FROM "social_accounts" WHERE (uid = '_gid_q5jcWua3PAR6MaBvVHu+5A==' and provider = 'twitter') LIMIT 1[0m
+Redirected to http://localhost:4004/social/connect
+Completed in 12ms (DB: 0) | 302 Found [http://localhost/social/signup?provider=twitter&signature=9a5rD0MuRoAVEMR411yh9QKwnIQ%3D&UIDSig=9a5rD0MuRoAVEMR411yh9QKwnIQ%3D&timestamp=2011-02-16%2014%3A35%3A18&UIDSignature=EDL5bTe9IP1a1ZRuGOxxkKs%2FVA0%3D&signatureTimestamp=1297866918&UID=_gid_q5jcWua3PAR6MaBvVHu%2B5A%3D%3D&nickname=gautamrege&photoURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&thumbnailURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&gender=&email=&proxiedEmail=&country=Pune%2CIndia&state=&city=&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Ftwitter.com%2Fgautamrege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=twitter&loginProviderUID=64960831&isTempUser=false]
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 20:05:19) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (3.2ms)
+Completed in 18ms (View: 5, DB: 0) | 200 OK [http://localhost/social/connect]
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 20:06:05) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/users_controller.rb:87:in `social_account_linking_url'
+  app/controllers/users_controller.rb:87:in `social_register'
+
+Rendered rescues/_trace (38.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 20:06:42) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/users_controller.rb:87:in `social_account_linking_url'
+  app/controllers/users_controller.rb:87:in `social_register'
+
+Rendered rescues/_trace (94.0ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:06:47) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 20:06:47) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (18.6ms)
+Completed in 91ms (View: 89, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 20:07:49) [GET]
+  Parameters: {"proxiedEmail"=>"", "city"=>"", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"45inwII3WclBQMuZ0O25qpNOEuI=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 14:37:48", "country"=>"Pune,India", "loginProviderUID"=>"64960831", "UIDSig"=>"YzIyq1LPA8pj4k+8OD6ciLWI4HA=", "nickname"=>"gautamrege", "thumbnailURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "signature"=>"YzIyq1LPA8pj4k+8OD6ciLWI4HA=", "loginProvider"=>"twitter", "UID"=>"_gid_q5jcWua3PAR6MaBvVHu+5A==", "gender"=>"", "photoURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"twitter", "signatureTimestamp"=>"1297867068", "email"=>"", "state"=>"", "profileURL"=>"http://twitter.com/gautamrege", "isSiteUser"=>"true"}
+  [4;35;1mSocialAccount Load (0.4ms)[0m   [0mSELECT * FROM "social_accounts" WHERE (uid = '_gid_q5jcWua3PAR6MaBvVHu+5A==' and provider = 'twitter') LIMIT 1[0m
+Redirected to http://localhost:4004/social/connect
+Completed in 14ms (DB: 0) | 302 Found [http://localhost/social/signup?provider=twitter&signature=YzIyq1LPA8pj4k%2B8OD6ciLWI4HA%3D&UIDSig=YzIyq1LPA8pj4k%2B8OD6ciLWI4HA%3D&timestamp=2011-02-16%2014%3A37%3A48&UIDSignature=45inwII3WclBQMuZ0O25qpNOEuI%3D&signatureTimestamp=1297867068&UID=_gid_q5jcWua3PAR6MaBvVHu%2B5A%3D%3D&nickname=gautamrege&photoURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&thumbnailURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&gender=&email=&proxiedEmail=&country=Pune%2CIndia&state=&city=&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Ftwitter.com%2Fgautamrege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=twitter&loginProviderUID=64960831&isTempUser=false]
+
+
+Processing UsersController#social_connect (for 127.0.0.1 at 2011-02-16 20:07:49) [GET]
+Rendering template within layouts/application
+Rendering users/social_connect
+Rendered users/_basic (10.1ms)
+Completed in 33ms (View: 22, DB: 0) | 200 OK [http://localhost/social/connect]
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 20:07:59) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/users_controller.rb:87:in `social_account_linking_url'
+  app/controllers/users_controller.rb:87:in `social_register'
+
+Rendered rescues/_trace (109.3ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 20:25:32) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;35;1mUser Load (3.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/users_controller.rb:87:in `social_account_linking_url'
+  app/controllers/users_controller.rb:87:in `social_register'
+
+Rendered rescues/_trace (48.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 20:26:16) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/users_controller.rb:88:in `social_account_linking_url'
+  app/controllers/users_controller.rb:88:in `social_register'
+
+Rendered rescues/_trace (108.3ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_register (for 127.0.0.1 at 2011-02-16 20:26:50) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user"=>{"password_confirmation"=>"grege123", "password"=>"grege123", "login"=>"gautam", "email"=>"gautamrege@gmail.com"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."email" = 'gautamrege@gmail.com') LIMIT 1[0m
+Redirected to http://localhost:4004/social/5/linking
+Completed in 19ms (DB: 0) | 302 Found [http://localhost/social/register]
+
+
+Processing UsersController#social_account_linking (for 127.0.0.1 at 2011-02-16 20:26:50) [GET]
+  Parameters: {"user_id"=>"5"}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '5') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/social_account_linking
+Completed in 17ms (View: 8, DB: 0) | 200 OK [http://localhost/social/5/linking]
+
+
+Processing UsersController#social_account_add (for 127.0.0.1 at 2011-02-16 20:26:58) [POST]
+  Parameters: {"commit"=>"Link Accounts", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user_id"=>"5", "user"=>{"password"=>"grege123"}}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 5) [0m
+
+NoMethodError (undefined method `strip' for nil:NilClass):
+  app/controllers/users_controller.rb:54:in `social_account_add'
+
+Rendered rescues/_trace (41.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#social_account_add (for 127.0.0.1 at 2011-02-16 20:27:28) [POST]
+  Parameters: {"commit"=>"Link Accounts", "authenticity_token"=>"b9VQcuJwYPCOh26u4T6qY/GxdCUJSKXRN8X82FD7DOo=", "user_id"=>"5", "user"=>{"password"=>"grege123"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 5) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."login" = 'gautam') LIMIT 1[0m
+  [4;36;1mSocialAccount Create (0.6ms)[0m   [0;1mINSERT INTO "social_accounts" ("created_at", "updated_at", "uid", "user_id", "provider") VALUES('2011-02-16 14:57:28', '2011-02-16 14:57:28', '_gid_q5jcWua3PAR6MaBvVHu+5A==', 5, 'twitter')[0m
+Redirected to http://localhost:4004/
+Completed in 63ms (DB: 1) | 302 Found [http://localhost/social/5/add]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:27:29) [GET]
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 82ms (View: 72, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:27:29) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 14ms (View: 3, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2011-02-16 20:27:34) [GET]
+Redirected to http://localhost:4004/
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:27:34) [GET]
+Redirected to http://localhost:4004/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2011-02-16 20:27:34) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered users/_social (0.1ms)
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing UsersController#social_signup (for 127.0.0.1 at 2011-02-16 20:27:54) [GET]
+  Parameters: {"proxiedEmail"=>"", "city"=>"", "isSiteUID"=>"false", "isConnected"=>"true", "isTempUser"=>"false", "UIDSignature"=>"NdPNVpU8/dVNuWcaZNHAl+vBnNk=", "zip"=>"", "lastName"=>"Rege", "timestamp"=>"2011-02-16 14:57:53", "country"=>"Pune,India", "loginProviderUID"=>"64960831", "UIDSig"=>"hyf5AR3hzn1EGLykaidMYdKL8c8=", "nickname"=>"gautamrege", "thumbnailURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "signature"=>"hyf5AR3hzn1EGLykaidMYdKL8c8=", "loginProvider"=>"twitter", "UID"=>"_gid_q5jcWua3PAR6MaBvVHu+5A==", "gender"=>"", "photoURL"=>"http://a3.twimg.com/profile_images/366182874/gautam_normal.jpg", "firstName"=>"Gautam", "isLoggedIn"=>"true", "provider"=>"twitter", "signatureTimestamp"=>"1297868273", "email"=>"", "state"=>"", "profileURL"=>"http://twitter.com/gautamrege", "isSiteUser"=>"true"}
+  [4;35;1mSocialAccount Load (0.5ms)[0m   [0mSELECT * FROM "social_accounts" WHERE (uid = '_gid_q5jcWua3PAR6MaBvVHu+5A==' and provider = 'twitter') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 5) [0m
+Redirected to http://localhost:4004/
+Completed in 16ms (DB: 1) | 302 Found [http://localhost/social/signup?provider=twitter&signature=hyf5AR3hzn1EGLykaidMYdKL8c8%3D&UIDSig=hyf5AR3hzn1EGLykaidMYdKL8c8%3D&timestamp=2011-02-16%2014%3A57%3A53&UIDSignature=NdPNVpU8%2FdVNuWcaZNHAl%2BvBnNk%3D&signatureTimestamp=1297868273&UID=_gid_q5jcWua3PAR6MaBvVHu%2B5A%3D%3D&nickname=gautamrege&photoURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&thumbnailURL=http%3A%2F%2Fa3.twimg.com%2Fprofile_images%2F366182874%2Fgautam_normal.jpg&gender=&email=&proxiedEmail=&country=Pune%2CIndia&state=&city=&zip=&firstName=Gautam&lastName=Rege&profileURL=http%3A%2F%2Ftwitter.com%2Fgautamrege&isSiteUID=false&isLoggedIn=true&isConnected=true&isSiteUser=true&loginProvider=twitter&loginProviderUID=64960831&isTempUser=false]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2011-02-16 20:27:54) [GET]
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering home/index
+Completed in 12ms (View: 3, DB: 0) | 200 OK [http://localhost/]

@@ -1,0 +1,7 @@
+== Single Sign On using Gigya widgets 
+
+Read more here: [Integrate Gigya Register Widget into your Application](http://blog.joshsoftware.com/2010/04/19/integrate-gigya-register-widget-into-your-application/)
+
+== Usage
+
+

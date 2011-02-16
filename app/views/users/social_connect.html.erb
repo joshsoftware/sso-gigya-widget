@@ -1,0 +1,9 @@
+<h1>Sign up as a new user</h1>
+<% @user.password = @user.password_confirmation = nil %>
+
+<%= error_messages_for :user %>
+<% form_for :user, @user, :url => social_register_path do |f| -%>
+
+<%= render :partial => 'basic', :locals => { :f => f } %>
+
+<% end %>

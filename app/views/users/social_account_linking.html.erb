@@ -1,0 +1,11 @@
+We already have this email registered - link accounts?
+
+<% form_for :user, :url => social_account_add_path(@user.id) do |f| -%>
+
+<p><%= f.label :password %><br/>
+<%= f.password_field :password %></p>
+
+<p><%= submit_tag 'Link Accounts' %></p>
+
+<% end %>
+

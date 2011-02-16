@@ -1,0 +1,19 @@
+<div id="social_connect">
+  <div id="loginDiv" style="float:left;"></div>
+
+  <script type="text/javascript">
+    var login_params=
+    {
+      showTermsLink: false
+      ,height: 80
+      ,width: 267
+      ,containerID: 'loginDiv'
+      ,UIConfig: '<config><body><background background-color="Transparent"></background><controls><snbuttons buttonsize="50"></snbuttons></controls></body></config>'
+      ,useFacebookConnect: true
+      ,redirectURL: '<%= ApplicationConfig['gigya']['login_redirect_url'] %>'
+      ,buttonsStyle: 'fullLogo'
+    };
+    gigya.services.socialize.showLoginUI(conf,login_params);
+  </script>
+</div>
+
